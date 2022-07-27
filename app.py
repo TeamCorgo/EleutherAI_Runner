@@ -18,7 +18,6 @@ tokenizer = AutoTokenizer.from_pretrained("EleutherAI/" + os.getenv('AI_Model'))
 question = "What is dance?"
 answer = ''
 
-
 def get_answer(question, model, tokenizer):
     input_ids = tokenizer(question, return_tensors="pt").input_ids
 
