@@ -94,7 +94,8 @@ def index():
     categories = os.environ['Categories']
     categories = categories.split(':')
 
-    url = os.environ['Destination']  + '/json'
+    url = os.environ['Destination']
+    print(f'➡️ Destination URL: {url}')
     json_data = { 
         "Title": question, 
         "Content": answer, 
