@@ -1,22 +1,17 @@
-
 import os, json, torch, requests
 from flask import Flask, request
 from transformers import GPTNeoForCausalLM, AutoTokenizer
 
 # Manual set env keys to test with:
-os.environ['Number_Of_Words'] = '400'
-os.environ['AI_Model'] = 'gpt-neo-125M'
-os.environ['Destination'] = ''
-os.environ['Tags'] = 'Family Feud'
-os.environ['Categories'] = 'AI Generated'
-
+#os.environ['Number_Of_Words'] = '400'
+#os.environ['AI_Model'] = 'gpt-neo-125M'
+#os.environ['Destination'] = ''
+#os.environ['Tags'] = 'Family Feud'
+#os.environ['Categories'] = 'AI Generated'
 
 # Load the model into mem once then reuse as needed
 model = GPTNeoForCausalLM.from_pretrained("EleutherAI/" + os.getenv('AI_Model'))
 tokenizer = AutoTokenizer.from_pretrained("EleutherAI/" + os.getenv('AI_Model'))
-
-question = "What is dance?"
-answer = ''
 
 def get_answer(question, model, tokenizer):
     input_ids = tokenizer(question, return_tensors="pt").input_ids
